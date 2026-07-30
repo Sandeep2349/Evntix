@@ -18,6 +18,10 @@ app.use('/api/auth',authRoutes);
 app.use('/api/events',eventRoutes);
 app.use('/api/bookings',bookingRoutes);
 
+app.get("/", (req, res) => {
+    res.json({ message: "Evntix API is running successfully!" });
+});
+
 
 //connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
