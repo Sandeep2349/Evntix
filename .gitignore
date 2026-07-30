@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production builds
+client/dist/
+
+# Secrets and environment configurations
+server/.env
+client/.env
+client/.env.*
+.env
+
+# Logs
+*.log
+logs/
+
+# IDE/Tooling caches
+.cursor/
+.gemini/
+.DS_Store
+.idea/
+.vscode/
+
+#changes made images
+changes made/
