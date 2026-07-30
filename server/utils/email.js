@@ -6,10 +6,14 @@ dotenv.config();
 // Create Nodemailer Transporter
 const transporter = nodemailer.createTransport({
   service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS, // Reminder: Must be an App Password, not standard password
   },
+  family: 4 // Force IPv4 to bypass Render's IPv6 connectivity limits
 });
 
 // Verify email service connection on startup
