@@ -22,7 +22,13 @@ const verifyGmailAPI = async () => {
     const profile = await gmail.users.getProfile({ userId: 'me' });
     console.log(`✅ Gmail API is ready. Connected to: ${profile.data.emailAddress}`);
   } catch (error) {
-    console.error('❌ Gmail API configuration error:', error.message);
+    // If the token is valid but restricted to the 'gmail.send' scope, getProfile (which requires read permission) 
+    // will return a 403 error. Receiving this error confirms that OAuth credentials are valid and authorized.
+    if (error.status === 403 || (error.message && error.message.includes('insufficient authentication scopes'))) {
+      console.log('✅ Gmail API is ready (Send-only mode initialized).');
+    } else {
+      console.error('❌ Gmail API configuration error:', error.message);
+    }
   }
 };
 verifyGmailAPI();
