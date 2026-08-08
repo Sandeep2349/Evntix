@@ -13,7 +13,10 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS, // Reminder: Must be an App Password, not standard password
   },
-  family: 4 // Force IPv4 to bypass Render's IPv6 connectivity limits
+  family: 4 ,// Force IPv4 to bypass Render's IPv6 connectivity limits
+  connectionTimeout: 5000, // 5 seconds
+  greetingTimeout: 5000,
+  socketTimeout: 5000,
 });
 
 // Verify email service connection on startup
