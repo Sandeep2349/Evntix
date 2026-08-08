@@ -13,10 +13,7 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS, // Reminder: Must be an App Password, not standard password
   },
-  family: 4 ,// Force IPv4 to bypass Render's IPv6 connectivity limits
-  connectionTimeout: 5000, // 5 seconds
-  greetingTimeout: 5000,
-  socketTimeout: 5000,
+  family: 4 // Force IPv4 to bypass Render's IPv6 connectivity limits
 });
 
 // Verify email service connection on startup
@@ -91,12 +88,12 @@ const sendOTPEmail = async (userEmail, otp, type) => {
       subject: title,
       html: `
         <div style="font-family: Arial, sans-serif; background-color: #f9fafb; padding: 30px; color: #111827;">
-          <div style="max-width: 480px; margin: 0 auto; background: #ffffff; border-radius: 12px; padding: 24px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); text-align: center;">
+          <div style="max-width: 480px; margin: 0 auto; background: #ffffff; border-radius: 12px; padding: 24px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); text-ali[...] 
             <h2 style="font-size: 20px; font-weight: 700; color: #1f2937; margin-top: 0;">${title}</h2>
             <p style="font-size: 14px; color: #4b5563; line-height: 1.5;">${msg}</p>
             
             <div style="margin: 28px 0;">
-              <span style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #4f46e5; background-color: #eef2ff; padding: 12px 24px; border-radius: 8px; border: 1px dashed #c7d2fe; display: inline-block;">
+              <span style="font-size: 32px; font-weight: 800; letter-spacing: 6px; color: #4f46e5; background-color: #eef2ff; padding: 12px 24px; border-radius: 8px; border: 1px dashed #c7d2fe; di[...] 
                 ${otp}
               </span>
             </div>
@@ -127,6 +124,7 @@ module.exports = { sendBookingEmail, sendOTPEmail };
 
 
 
+
 // const nodemailer = require("nodemailer");
 // const dotenv = require("dotenv");
 
@@ -139,7 +137,7 @@ module.exports = { sendBookingEmail, sendOTPEmail };
 //         user: process.env.EMAIL_USER,
 //         pass: process.env.EMAIL_PASS
 //     }
-// });
+//});
 
 // exports.sendOtpEmail = async (email,otp ,type )=>{
 //     try{
